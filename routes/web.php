@@ -175,15 +175,5 @@ Route::group(['prefix' => 'admin'], function () {
             'as' => 'storeAdmin',
             'uses' => 'PermissionController@storeAdmin'
         ]);
-
-        Route::put('/admin/password/store', [
-            'as' => 'pasStore',
-            'uses' => 'PermissionController@pasStore'
-        ]);
-
-        Route::get('/admin/password', [
-            'as' => 'passAdmin',
-            'uses' => 'PermissionController@passAdmin'
-        ]);
     });
 });

@@ -53,25 +53,4 @@ class PermissionController extends Controller
 
         return redirect()->route('adminUser')->with('message', 'Admin Succesfully updated');
     }
-
-    public function passAdmin()
-    {
-        $user = Auth::user('admin');
-        // dd($user);
-        return view('permission.pass', compact('user'));
-    }
-
-    public function pasStore(Request $request)
-    {
-        $user = Auth::user('admin');
-        $current_password = $request->input('current_password');
-        $new_password = $request->input('password');
-        if (!Hash::check($current_password, $user->password)) {
-            return redirect()->route('passAdmin')->with('message', 'Password Error');
-        } else {
-            $user->fill([
-                'password' => Hash::make($request->newPassword)
-            ])->save();
-        }
-    }
 }
