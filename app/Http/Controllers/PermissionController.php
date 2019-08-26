@@ -48,7 +48,7 @@ class PermissionController extends Controller
         Auth::user('admin')->update(array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => $request->get(bcrypt('password')),
+            'password' => Hash::make($request->password)
         ));
 
         return redirect()->route('adminUser')->with('message', 'Admin Succesfully updated');
