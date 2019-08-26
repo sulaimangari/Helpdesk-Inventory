@@ -1,4 +1,4 @@
-@extends( Auth::user()->role === 'admin' ? 'layout.master' : 'user.layout' )
+@extends( Auth::user()->hasRole('admin') ? 'layout.master' : 'user.layout' )
 
 @section('style')
 

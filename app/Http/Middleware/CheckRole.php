@@ -22,7 +22,7 @@ class CheckRole
 
         $user = Auth::user();
 
-        if ($user->authorizeRoles(['admin',]))
+        if ($user->authorizeRoles('admin'))
             return $next($request);
 
         foreach ($roles as $role) {

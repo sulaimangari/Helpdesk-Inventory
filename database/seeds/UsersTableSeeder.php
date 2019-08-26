@@ -28,6 +28,7 @@ class UsersTableSeeder extends Seeder
         $userAdmin->save();
         $userAdmin->roles()->attach($admin);
 
+
         $userCrew = new User();
         $userCrew->name = 'Crew';
         $userCrew->email = 'crew@mail.com';

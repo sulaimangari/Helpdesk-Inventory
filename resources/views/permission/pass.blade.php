@@ -14,6 +14,15 @@
 
 
 <section class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            @if(session()->get('message'))
+            <div class="callout callout-success">
+                {{ session()->get('message') }}
+            </div>
+            @endif
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-3">
@@ -29,7 +38,7 @@
                     <li role="presentation"><a href="{{ route('adminUser') }}">Update Account
                             Info</a></li>
 
-                    <li role="presentation" class="active"><a href="{{ route('passUser') }}">Change
+                    <li role="presentation" class="active"><a href="{{ route('passAdmin') }}">Change
                             Password</a></li>
 
                 </ul>
@@ -37,20 +46,18 @@
         </div>
         <div class="col-md-6">
 
-            <form class="form" action="http://localhost:3333/admin/change-password" method="post">
+            <form class="form" action="{{ route('passAdmin') }}" method="put">
 
-                <input type="hidden" name="_token" value="b7hFPNAU6IQazLSj42bwYTVFhGPFD9qLkKql7wdR">
+                {{-- <input type="hidden" name="_token" value="b7hFPNAU6IQazLSj42bwYTVFhGPFD9qLkKql7wdR"> --}}
 
                 <div class="box padding-10">
 
                     <div class="box-body backpack-profile-form">
 
-
-
                         <div class="form-group">
                             <label class="required">Old password</label>
                             <input autocomplete="new-password" required="" class="form-control" type="password"
-                                name="old_password" id="old_password" value="" placeholder="Old password">
+                                name="current_password" id="current_password" value="" placeholder="Old password">
                         </div>
 
                         <div class="form-group">
@@ -59,17 +66,17 @@
                                 name="new_password" id="new_password" value="" placeholder="New password">
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="required">Confirm password</label>
                             <input autocomplete="new-password" required="" class="form-control" type="password"
-                                name="confirm_password" id="confirm_password" value="" placeholder="Confirm password">
-                        </div>
+                                name="current_password" id="current_password" value="" placeholder="Confirm password">
+                        </div> --}}
 
                         <div class="form-group m-b-0">
 
                             <button type="submit" class="btn btn-success"><span class="ladda-label"><i
                                         class="fa fa-save"></i> Change Password</span></button>
-                            <a href="http://localhost:3333/admin" class="btn btn-default"><span
+                            <a href="{{ route('home') }}" class="btn btn-default"><span
                                     class="ladda-label">Cancel</span></a>
 
                         </div>

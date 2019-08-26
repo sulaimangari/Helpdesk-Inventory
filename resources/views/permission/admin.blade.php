@@ -16,6 +16,15 @@
 </section>
 
 <section class="content">
+    <div class="row">
+        <div class="col-lg-12">
+            @if(session()->get('message'))
+            <div class="callout callout-success">
+                {{ session()->get('message') }}
+            </div>
+            @endif
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-md-3">
@@ -31,7 +40,7 @@
                     <li role="presentation" class="active"><a href="{{ route('adminUser') }}">Update Account Info</a>
                     </li>
 
-                    <li role="presentation"><a href="{{ route('passUser') }}">Change Password</a>
+                    <li role="presentation"><a href="{{ route('passAdmin') }}">Change Password</a>
                     </li>
 
                 </ul>
@@ -39,30 +48,36 @@
         </div>
         <div class="col-md-6">
 
-            <form class="form" action="#" method="post">
+            <form class="form" action="{{ route('storeAdmin') }}" method="post">
+                @csrf
 
-                {{-- <input type="hidden" name="_token" value="2W9Zw7O1tXBhBQp4mzvNiVOKGx9lqELeAF8H6OFM"> --}}
+                <input type="hidden" name="id" value="1">
 
                 <div class="box padding-10">
 
                     <div class="box-body backpack-profile-form">
 
-
-
                         <div class="form-group">
                             <label class="required">Name</label>
-                            <input required="" class="form-control" type="text" name="name" value="admin">
+                            <input class="form-control" type="text" name="name" value="{{ $user->name }}">
                         </div>
 
                         <div class="form-group">
                             <label class="required">Email</label>
-                            <input required="" class="form-control" type="email" name="email" value="admin@mail.com">
+                            <input class="form-control" type="email" name="email" value="{{ $user->email }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="required">New Password</label>
+                            <input autocomplete="new-password" required="" class="form-control" type="password"
+                                name="password" value="">
                         </div>
 
                         <div class="form-group m-b-0">
                             <button type="submit" class="btn btn-success"><span class="ladda-label"><i
                                         class="fa fa-save"></i> Save</span></button>
-                            <a href="#" class="btn btn-default"><span class="ladda-label">Cancel</span></a>
+                            <a href="{{ route('adminUser') }}" class="btn btn-default"><span
+                                    class="ladda-label">Cancel</span></a>
                         </div>
 
                     </div>

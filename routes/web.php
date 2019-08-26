@@ -171,9 +171,19 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'PermissionController@adminUser'
         ]);
 
+        Route::post('/admin/data/store', [
+            'as' => 'storeAdmin',
+            'uses' => 'PermissionController@storeAdmin'
+        ]);
+
+        Route::put('/admin/password/store', [
+            'as' => 'pasStore',
+            'uses' => 'PermissionController@pasStore'
+        ]);
+
         Route::get('/admin/password', [
-            'as' => 'passUser',
-            'uses' => 'PermissionController@passUser'
+            'as' => 'passAdmin',
+            'uses' => 'PermissionController@passAdmin'
         ]);
     });
 });

@@ -8,6 +8,8 @@ use App\Http\Models\Borrow;
 use App\Http\Models\User;
 use Auth;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
+
 class UserController extends Controller
 {
     /**
