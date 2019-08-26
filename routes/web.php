@@ -64,24 +64,24 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/table', [
             'as' => 'listTicket',
             'uses' => 'TicketController@listTicket'
-        ]);
+        ])->middleware('role:admin');
 
         Route::delete('/destroy', [
             'as' => 'destroyTicket',
             'uses' => 'TicketController@destroyTicket'
-        ]);
+        ])->middleware('role:admin');
 
         Route::get('/edit/{id}', [
             'as' => 'editTicket',
             'uses' => 'TicketController@editTicket'
-        ]);
+        ])->middleware('role:admin');
         Route::post('/update', [
             'as' => 'updateTicket',
             'uses' => 'TicketController@updateTicket'
-        ]);
+        ])->middleware('role:admin');
     });
 
-    Route::group(['prefix' => 'device', 'middleware' => ['role']], function () {
+    Route::group(['prefix' => 'device', 'middleware' => ['role:admin']], function () {
         Route::get('/all', [
             'as' => 'allDevice',
             'uses' => 'DeviceController@alldevice',
@@ -155,7 +155,7 @@ Route::group(['prefix' => 'admin'], function () {
         ]);
     });
 
-    Route::group(['prefix' => 'permission', 'middleware' => ['role']], function () {
+    Route::group(['prefix' => 'permission', 'middleware' => ['role:admin']], function () {
         Route::get('/create', [
             'as' => 'createUser',
             'uses' => 'PermissionController@createUser'
